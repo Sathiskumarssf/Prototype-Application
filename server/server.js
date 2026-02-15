@@ -32,13 +32,17 @@ app.use("/api/items", require("./routes/items"));
    SERVE REACT (EXPRESS 5 SAFE)
 ====================== */
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
-
-  app.use((req, res) => {
-    res.sendFile(
-      path.resolve(__dirname, "../client/build", "index.html")
-    );
-  });
+  const buildPath = path.join(__dirname, "../client/build");
+  // Only serve frontend if it exists
+  const fs = require("fs");
+  if (fs.existsSync(buildPath)) {
+    app.use(express.static(buildPath));
+    app.use((req, res) => {
+      res.sendFile(path.resolve(buildPath, "index.html"));
+    });
+  } else {
+    console.log("Frontend not built, skipping static serving");
+  }
 }
 
 /* ======================
