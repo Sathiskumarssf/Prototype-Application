@@ -91,13 +91,30 @@ export default function Dashboard() {
     setFile(null);
   };
 
-  return (
-    
-    <div className=" ">
-      <Navbar />
-      <div className="card shadow p-4 mb-4">
-        <h2 className="text-center mb-4">Dashboard</h2>
+ return (
+  <div>
+    <Navbar/>
 
+    <div className="p-3 my-4">
+      <div
+        className="card shadow-lg p-4 mb-4"
+        style={{ borderRadius: "15px", border: "none" }}
+      >
+        {/* Dashboard Title */}
+        <h2
+          className=" mb-4"
+          style={{
+            fontFamily: "'Segoe UI', sans-serif",
+            fontStyle: "italic",
+            letterSpacing: "1px",
+            color: "#970747",
+            textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
+          }}
+        >
+          Dashboard
+        </h2>
+
+        {/* Alert Messages */}
         {message && (
           <div className={`alert alert-${messageType}`} role="alert">
             {message}
@@ -109,7 +126,7 @@ export default function Dashboard() {
           <div className="col-md-3">
             <input
               type="text"
-              className="form-control"
+              className="form-control custom-input"
               placeholder="Item Name"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -118,7 +135,7 @@ export default function Dashboard() {
           <div className="col-md-2">
             <input
               type="text"
-              className="form-control"
+              className="form-control custom-input"
               placeholder="Price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
@@ -127,21 +144,24 @@ export default function Dashboard() {
           <div className="col-md-4">
             <input
               type="file"
-              className="form-control"
+              className="form-control custom-input"
               onChange={(e) => setFile(e.target.files[0])}
             />
           </div>
           <div className="col-md-3">
-            <button className="btn btn-primary w-100" onClick={handleSubmit}>
+            <button
+              className="btn w-100 custom-btn"
+              onClick={handleSubmit}
+            >
               {editingItemId ? "Update Item" : "Add Item"}
             </button>
           </div>
         </div>
 
         {/* Items Table */}
-        <div className="table-responsive">
-          <table className="table table-striped table-bordered text-center align-middle">
-            <thead className="table-dark">
+        <div className="table-responsive"  >
+          <table className="table custom-table text-center align-middle" >
+            <thead>
               <tr>
                 <th>Item Image</th>
                 <th>Item Name</th>
@@ -173,14 +193,16 @@ export default function Dashboard() {
                     <td>${item.price}</td>
                     <td>
                       <button
-                        className="btn btn-warning btn-sm me-2"
+                        className="btn btn-success btn-sm  "
                         onClick={() => editItem(item)}
+                        style={{width:"100px"}}
                       >
                         Edit
                       </button>
                       <button
-                        className="btn btn-danger btn-sm"
+                        className="btn btn-warning btn-sm p-1 m-1"
                         onClick={() => deleteItem(item._id)}
+                         style={{width:"100px"}}
                       >
                         Delete
                       </button>
@@ -197,5 +219,78 @@ export default function Dashboard() {
         </div>
       </div>
     </div>
-  );
+
+    {/* Custom Styles */}
+    <style>
+      {`
+        /* Inputs */
+        .custom-input {
+          border-radius: 10px;
+          border: 1px solid #970747;
+          box-shadow: none;
+        }
+        .custom-input:focus {
+          border-color: #ad1e70;
+          outline: none;
+          box-shadow: 0 0 0 0.2rem rgba(173,30,112,0.25);
+        }
+
+        /* Buttons */
+        .custom-btn {
+          background-color: #970747;
+          color: #fff;
+          border-radius: 10px;
+          border: none;
+          font-weight: bold;
+          padding: 10px;
+          transition: all 0.3s;
+        }
+        .custom-btn:hover {
+          background-color: #ad1e70;
+        }
+
+        .btn-warning {
+          background-color: #f0ad4e;
+          
+          border-color: #f0ad4e;
+          transition: all 0.3s;
+        }
+        .btn-warning:hover {
+          background-color: #e0a03f;
+          border-color: #e0a03f;
+        }
+
+        .btn-danger {
+          transition: all 0.3s;
+        }
+        .btn-danger:hover {
+          background-color: #c82333;
+          border-color: #c82333;
+        }
+
+        /* Table Styling */
+        .custom-table {
+          border-collapse: separate;
+          border-spacing: 0;
+          border-radius: 10px;
+          overflow: hidden;
+          width: 100%;
+        }
+        .custom-table thead {
+          background-color: #970747;
+          color: #fff;
+        }
+        .custom-table th, .custom-table td {
+          vertical-align: middle;
+          padding: 12px;
+        }
+        .custom-table tbody tr:hover {
+          background-color: rgba(151, 7, 71, 0.1);
+          transition: background-color 0.3s;
+        }
+      `}
+    </style>
+  </div>
+);
+
 }

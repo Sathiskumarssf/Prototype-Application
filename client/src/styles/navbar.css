@@ -1,0 +1,28 @@
+/* Sticky navbar animation */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* Buttons */
+.custom-btn {
+  background-color: #ad1e70;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.custom-btn:hover {
+  background-color: #c0398c;
+  
+}
+
+/* Smooth collapse animation for mobile */
+.navbar-collapse.collapse {
+  transition: all 0.4s ease;
+}
