@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -6,28 +6,18 @@ import "../styles/navbar.css";
 
 export default function AppNavbar() {
   const location = useLocation();
-  const [sticky, setSticky] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setSticky(window.scrollY > 0);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <Navbar
       expand="lg"
       variant="dark"
-      className={`navbar navbar-expand-lg shadow p-3 ${sticky ? "sticky-nav" : ""}`}
+      className="navbar navbar-expand-lg shadow p-3"
       style={{
         backgroundColor: "#970747",
         width: "100%",
         zIndex: 1000,
       }}
     >
-      {/* Use fluid to stretch full width */}
       <Container fluid>
         {/* Brand */}
         <Navbar.Brand
@@ -37,9 +27,9 @@ export default function AppNavbar() {
           style={{
             letterSpacing: "2px",
             fontFamily: "'Segoe UI', sans-serif",
-            fontSize: "2.1rem",
+             
             color: "#ffffff",
-            marginLeft:'20px'
+             
           }}
         >
           Prototype App
@@ -63,7 +53,7 @@ export default function AppNavbar() {
               as={Link}
               to="/register"
               active={location.pathname === "/register"}
-              className="text-white px-3 py-2 rounded nav-btn"
+              className="text-white px-3 py-2 rounded nav-btn "
             >
               Register
             </Nav.Link>
@@ -81,31 +71,32 @@ export default function AppNavbar() {
         </Navbar.Collapse>
       </Container>
 
-      {/* Extra Style */}
+      {/* Extra Styles */}
       <style>
         {`
           .nav-btn {
             transition: all 0.3s ease;
-            background-color:#c12b86
+            background-color: #c12b86;
           }
+            .fw-bold{
+            margin-left:20px;
+            font-size:2.1rem;
+            }
 
           .nav-btn:hover {
             background-color: #ad1e70;
           }
 
-          .sticky-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-          }
-
           /* 📱 Mobile adjustments */
           @media (max-width: 768px) {
             .nav-btn {
-              width: 30%;
+              width: 35%;
               text-align: left;
-              margin-left:20px
+               
             }
+              .fw-bold{
+              margin-left:0px;
+              font-size:1.8rem}
           }
         `}
       </style>

@@ -97,7 +97,7 @@ export default function Dashboard() {
 
     <div className="p-3 my-4">
       <div
-        className="card shadow-lg p-4 mb-4"
+        className="card shadow-lg p-4"
         style={{ borderRadius: "15px", border: "none" }}
       >
         {/* Dashboard Title */}
@@ -150,7 +150,7 @@ export default function Dashboard() {
           </div>
           <div className="col-md-3">
             <button
-              className="btn w-100 custom-btn"
+              className="btn custom-btn"
               onClick={handleSubmit}
             >
               {editingItemId ? "Update Item" : "Add Item"}
@@ -224,6 +224,9 @@ export default function Dashboard() {
     <style>
       {`
         /* Inputs */
+        .card{
+        margin:20px;
+        }
         .custom-input {
           border-radius: 10px;
           border: 1px solid #970747;
@@ -241,10 +244,19 @@ export default function Dashboard() {
           color: #fff;
           border-radius: 10px;
           border: none;
+          width:120px;
           font-weight: bold;
-          padding: 10px;
+          padding: 8px;
           transition: all 0.3s;
         }
+          @media (max-width: 768px) {
+  .custom-btn {
+    width: 100%;
+  }
+    .card{
+        margin:5px;
+        }
+}
         .custom-btn:hover {
           background-color: #ad1e70;
         }
@@ -289,6 +301,7 @@ export default function Dashboard() {
           transition: background-color 0.3s;
         }
       `}
+      
     </style>
   </div>
 );

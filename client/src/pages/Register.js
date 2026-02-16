@@ -45,7 +45,7 @@ export default function Register() {
       {/* Styled Navbar */}
       <BeforeLoginNavbar />
 
-      <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+      <div className="main-container d-flex justify-content-center align-items-center  bg-light">
         <div
           className="card shadow-lg p-4"
           style={{
@@ -157,6 +157,10 @@ export default function Register() {
       {/* Custom input styles */}
       <style>
         {`
+        .main-container {
+            min-height: 90vh;
+          }
+
           .custom-input {
             border-radius: 10px;
             border: 1px solid #970747;
